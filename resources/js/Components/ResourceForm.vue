@@ -1,0 +1,38 @@
+<script setup>
+
+import { ref } from "vue";
+import axios from "axios";
+let title = ref("");
+let description = ref("");
+let link = ref("");
+
+async function createResource() {
+  try {
+    const response = await axios.post("api/resources", {
+      title: title.value,
+      description: description.value,
+      link: link.value,
+    });
+
+    console.log("El recurso se creó en el sistema:", response.data);
+  } catch (error) {
+    if (error.response) {
+      console.error("El servidor muestra un error:", error.response.data);
+      console.error("Status code:", error.response.status);
+    } else if (error.request) {
+      console.error("No se obtuvo ninguna respuesta del servidor:", error.request);
+    } else {
+      console.error("Error al hacer la petición :", error.message);
+    }
+  }
+}
+
+</script>
+<template>
+    <div class="m-8">
+        <input type="text" v-model="title" />
+        <input type="text" v-model="description" />
+        <input type="text" v-model="link" />
+        <button @click="createResource">Crear recurso</button>
+    </div>
+</template>
