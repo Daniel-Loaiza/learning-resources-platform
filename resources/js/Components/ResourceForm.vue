@@ -21,6 +21,9 @@ async function createResource() {
       title: title.value,
       description: description.value,
       link: link.value,
+      category_id: category_id.value,
+    }).then((response)=>{
+      window.location.href ="/";
     });
 
     console.log("El recurso se creó en el sistema:", response.data);
@@ -43,7 +46,7 @@ async function createResource() {
         <input type="text" v-model="description" />
         <input type="text" v-model="link" />
         <select v-model="category_id">
-          <option v-for="category in categories" :key="category.id">
+          <option v-for="category in categories" :key="category.id" :value="category.id">
             {{ category.name }}
           </option>
         </select>
