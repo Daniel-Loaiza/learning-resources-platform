@@ -1,10 +1,19 @@
 <script setup>
 
-import { ref } from "vue";
 import axios from "axios";
+import { ref, onMounted } from "vue";
+
 let title = ref("");
 let description = ref("");
 let link = ref("");
+let categories = ref([]);
+let category_id = ref(null);
+
+onMounted(()=>{
+  axios.get("/api/categories").then((response)=>{
+    categories.value = response.data;
+  });
+});
 
 async function createResource() {
   try {
@@ -33,6 +42,11 @@ async function createResource() {
         <input type="text" v-model="title" />
         <input type="text" v-model="description" />
         <input type="text" v-model="link" />
+        <select v-model="category_id">
+          <option v-for="category in categories" :key="category.id">
+            {{ category.name }}
+          </option>
+        </select>
         <button @click="createResource">Crear recurso</button>
     </div>
 </template>

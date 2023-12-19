@@ -48,4 +48,4 @@ Route::get('api/resources', [ResourceController::class,'search']);
 // });
 
 Route::middleware('auth')->post('api/resources',[ResourceController::class,'store']);
-
+Route::middleware('auth')->get('api/categories',[CategoryController::class,'index']);
