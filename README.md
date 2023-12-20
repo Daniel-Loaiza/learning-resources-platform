@@ -4,10 +4,7 @@ A blog (a truncation of "weblog") is an informational website consisting of disc
 
 ### Built with...
 
-[![My Skills](https://skillicons.dev/icons?i=laravel,vue.tailwind&perline=3)](https://skillicons.dev)
-<div align="center">
-	[![My Skills](https://skillicons.dev/icons?i=laravel,vue,tailwind&perline=3)](https://skillicons.dev)
-</div>
+[![My Skills](https://skillicons.dev/icons?i=laravel,vue,tailwind&perline=3&theme=light)](https://skillicons.dev)
 
 ## Getting Started
 
