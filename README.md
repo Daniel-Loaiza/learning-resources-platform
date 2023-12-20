@@ -1,4 +1,4 @@
-# A simple Blog with Poll, made with Laravel, Vue.js and Tailwind
+# A simple Blog with a Poll, made with Laravel, Vue.js and Tailwind
 
 A blog (a truncation of "weblog") is an informational website consisting of discrete, often informal diary-style text entries (posts). Posts are typically displayed in reverse chronological order so that the most recent post appears first, at the top of the web page.
 
