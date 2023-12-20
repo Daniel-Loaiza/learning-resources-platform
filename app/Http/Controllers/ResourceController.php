@@ -16,6 +16,7 @@ class ResourceController extends Controller
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
             'resources' => Resource::with('category')->latest()->get(),
+            'categories' => Category::all(),
         ]);
     }
 
@@ -42,9 +43,19 @@ class ResourceController extends Controller
     }
 
     public function search(Request $request) {
-        return Resource::where('title','like',"$request->search%")
+        // return Resource::where('title','like',"$request->search%")
         // ->orWhere('description','like',"$request->search%")
+        // ->with('category')
+        // ->get();
+
+        return Resource::query()
+        ->when(!empty($request->search),function($query) use ($request){
+            return $query->where('title','like', "%$request->search%");
+        })
+        ->when(!empty($request->category),function($query) use ($request){
+            return $query->where('category_id','like', $request->category);
+        })        
         ->with('category')
-        ->get();
+        ->get();        
     }
 }
